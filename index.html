@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Paraia Multi Select</title>
+
+    <link rel="stylesheet" href="docs/css/bootstrap.min.css">
+    <link rel="stylesheet" href="dist/css/paraia_multi_select.min.css">
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <br>
+            <input type="text" class="form-control"
+                   name="brands"
+                   data-paraia-multi-select="true"
+                   placeholder="Select a brand">
+            <br>
+            <button class="btn btn-primary" id="show_selected">Show Selected Items</button>
+        </div>
+    </div>
+</div>
+
+<script src="docs/js/jquery-3.3.1.min.js"></script>
+<script src="docs/js/bootstrap.min.js"></script>
+<script src="dist/js/paraia_multi_select.min.js"></script>
+<script>
+    // You'd better put the code inside ready() function
+    $(document).ready(function () {
+        // Items to select
+        var items = [
+            {value: 11, text: 'Apple'},
+            {value: 12, text: 'Nokia'},
+            {value: 13, text: 'Sony'},
+            {value: 14, text: 'LG'},
+            {value: 15, text: 'HTC'},
+            {value: 16, text: 'Motorola'},
+            {value: 17, text: 'Samsung'},
+            {value: 18, text: 'ZTE'},
+            {value: 19, text: 'Asus'},
+            {value: 20, text: 'Alcatel'}
+        ];
+
+        // Initialize paraia-multi-select
+        var select = $('[data-paraia-multi-select="true"]').paraia_multi_select({
+            multi_select: true,
+            items: items,
+            defaults: [11, 12, 13],
+            rtl: true
+        });
+
+        // Get selected items
+        $('#show_selected').click(function () {
+            alert(select.paraia_multi_select('get_items'))
+        });
+    });
+</script>
+</body>
+</html>
