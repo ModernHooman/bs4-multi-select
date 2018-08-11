@@ -69,37 +69,21 @@ function deselectAll(id) {
 
             input.css({'display': 'none', 'position': 'absolute'});
 
-            if (settings.rtl) {
-                select = $('<div class="paraia-multi-select rtl" id="paraia-multi-select-' + selectId + '">' +
-                    '<div class="selected-items form-control">' +
-                    '<span class="placeholder">' + input.attr('placeholder') + '</span>' +
-                    '<button type="button" onclick="selectAll(' + selectId + ', ' + settings.multi_select + ')"></button>' +
-                    '<button type="button" onclick="deselectAll(' + selectId + ')"></button>' +
-                    '</div>' +
-                    '<div class="dropdown form-control">' +
-                    '<div class="filter">' +
-                    '<input type="text" class="form-control" placeholder="' + settings.filter_text + '">' +
-                    '<button type="button" onclick="$(this).parent().find(\'input\').val(\'\').focus()">&times;</button>' +
-                    '</div>' +
-                    '<div class="items"></div>' +
-                    '</div>' +
-                    '</div>').insertAfter(input);
-            } else {
-                select = $('<div class="paraia-multi-select" id="paraia-multi-select-' + selectId + '">' +
-                    '<div class="selected-items form-control">' +
-                    '<span class="placeholder">' + input.attr('placeholder') + '</span>' +
-                    '<button type="button" onclick="selectAll(' + selectId + ', ' + settings.multi_select + ')"></button>' +
-                    '<button type="button" onclick="deselectAll(' + selectId + ')"></button>' +
-                    '</div>' +
-                    '<div class="dropdown form-control">' +
-                    '<div class="filter">' +
-                    '<input type="text" class="form-control" placeholder="' + settings.filter_text + '">' +
-                    '<button type="button" onclick="$(this).parent().find(\'input\').val(\'\').focus()">&times;</button>' +
-                    '</div>' +
-                    '<div class="items"></div>' +
-                    '</div>' +
-                    '</div>').insertAfter(input);
-            }
+            select = $(
+                '<div class="paraia-multi-select ' + (settings.rtl ? 'rtl' : '') + '" id="paraia-multi-select-' + selectId + '">' +
+                '   <div class="selected-items form-control">' +
+                '      <span class="placeholder">' + input.attr('placeholder') + '</span>' +
+                '      <button type="button" onclick="selectAll(' + selectId + ', ' + settings.multi_select + ')"></button>' +
+                '      <button type="button" onclick="deselectAll(' + selectId + ')"></button>' +
+                '   </div>' +
+                '   <div class="dropdown form-control">' +
+                '       <div class="filter">' +
+                '           <input type="text" class="form-control" placeholder="' + settings.filter_text + '">' +
+                '           <button type="button" onclick="$(this).parent().find(\'input\').val(\'\').focus()">&times;</button>' +
+                '       </div>' +
+                '       <div class="items"></div>' +
+                '   </div>' +
+                '</div>').insertAfter(input);
 
             dropDown = select.find('.dropdown');
             selectedItems = select.find('.selected-items');
