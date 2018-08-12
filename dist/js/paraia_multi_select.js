@@ -31,7 +31,7 @@ function selectAll(id, multi_select) {
             // add this item to selected-items
             select.find('.selected-items').append(
                 '<span class="item" data-val="' + item.attr('id') + '">' + item.parent().find('label').html() +
-                '<button type="button" onclick="removeItem($(this).parent().attr(\'data-val\'));">&times;</button>' +
+                '   <button type="button" onclick="removeItem($(this).parent().attr(\'data-val\'));">&times;</button>' +
                 '</span>'
             );
         });
@@ -100,30 +100,21 @@ function deselectAll(id) {
             }
 
             settings.items.forEach(function (item) {
-                if (settings.defaults.includes(item['value'])) {
-                    select.find('.items').append(
-                        '<div class="item">' +
-                        '<div class="custom-control custom-checkbox">' +
-                        '<input type="checkbox" class="custom-control-input" id="' + selectId + '-chbx-' + item['value'] + '" checked>' +
-                        '<label class="custom-control-label ' + selectId + '-chbx-' + item['value'] + '" for="' + selectId + '-chbx-' + item['value'] + '">' + item['text'] + '</label>' +
-                        '</div>' +
-                        '</div>'
-                    );
+                select.find('.items').append(
+                    '<div class="item">' +
+                    '   <div class="custom-control custom-checkbox">' +
+                    '       <input type="checkbox" class="custom-control-input" id="' + selectId + '-chbx-' + item['value'] + '" ' + (settings.defaults.includes(item['value']) ? 'checked' : '') + '>' +
+                    '       <label class="custom-control-label ' + selectId + '-chbx-' + item['value'] + '" for="' + selectId + '-chbx-' + item['value'] + '">' + item['text'] + '</label>' +
+                    '   </div>' +
+                    '</div>'
+                );
 
+                if (settings.defaults.includes(item['value'])) {
                     // add this item to selected-items
                     selectedItems.append(
                         '<span class="item" data-val="' + selectId + '-chbx-' + item['value'] + '">' + item['text'] +
-                        '<button type="button" onclick="removeItem($(this).parent().attr(\'data-val\'));">&times;</button>' +
+                        '   <button type="button" onclick="removeItem($(this).parent().attr(\'data-val\'));">&times;</button>' +
                         '</span>'
-                    );
-                } else {
-                    select.find('.items').append(
-                        '<div class="item">' +
-                        '<div class="custom-control custom-checkbox">' +
-                        '<input type="checkbox" class="custom-control-input" id="' + selectId + '-chbx-' + item['value'] + '">' +
-                        '<label class="custom-control-label ' + selectId + '-chbx-' + item['value'] + '" for="' + selectId + '-chbx-' + item['value'] + '">' + item['text'] + '</label>' +
-                        '</div>' +
-                        '</div>'
                     );
                 }
             });
@@ -156,7 +147,6 @@ function deselectAll(id) {
                     selectedItems.find('.placeholder').hide();
                 }
 
-
                 // if the item is already checked
                 if (inputElem.prop('checked')) {
                     selectedItems.find('[data-val="' + inputElem.attr('id') + '"]').remove();
@@ -179,7 +169,7 @@ function deselectAll(id) {
 
                     select.find('.selected-items').append(
                         '<span class="item" data-val="' + inputElem.attr('id') + '">' + item.find('label').html() +
-                        '<button type="button" onclick="removeItem($(this).parent().attr(\'data-val\'));">&times;</button>' +
+                        '   <button type="button" onclick="removeItem($(this).parent().attr(\'data-val\'));">&times;</button>' +
                         '</span>'
                     );
                 }
