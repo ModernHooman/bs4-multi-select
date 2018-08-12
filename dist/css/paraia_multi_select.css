@@ -157,11 +157,20 @@
 }
 
 .paraia-multi-select > .selected-items > button:nth-child(2) {
+    left: auto;
+    right: 7px;
+}
+
+.paraia-multi-select > .selected-items > button:nth-child(3) {
+    left: auto;
+    right: 40px;
+}
+.paraia-multi-select.rtl > .selected-items > button:nth-child(2) {
     right: auto;
     left: 7px;
 }
 
-.paraia-multi-select > .selected-items > button:nth-child(3) {
+.paraia-multi-select.rtl > .selected-items > button:nth-child(3) {
     right: auto;
     left: 40px;
 }
